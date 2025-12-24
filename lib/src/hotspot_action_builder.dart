@@ -24,64 +24,52 @@ class HotspotActionBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fg = controller.foregroundColor;
+    final fg = controller.foregroundColor ?? Colors.white;
 
     return Padding(
-      padding: EdgeInsets.only(bottom: 12) +
+      padding: EdgeInsets.only(bottom: 16) +
           EdgeInsets.symmetric(
-            horizontal: 12,
+            horizontal: 16,
           ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          /// Back / end tour button
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton(
-                child: Text(
-                  controller.isFirstPage ? endText : previousText,
-                  maxLines: 2,
+          /// Page indicators
+          Row(
+            children: [
+              for (var i = 0; i < controller.pages; i++)
+                AnimatedContainer(
+                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  duration: _duration,
+                  curve: _curve,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: controller.index == i ? fg : fg.withOpacity(0.3),
+                  ),
+                  height: 6,
+                  width: controller.index == i ? 24 : 6,
                 ),
-                onPressed: () {
-                  controller.previous();
-                },
-              ),
-            ),
+            ],
           ),
 
-          if (controller.pages > 5)
-            Text("${controller.index + 1}/${controller.pages}")
-          else
-            Row(
-              children: [
-                for (var i = 0; i < controller.pages; i++)
-                  AnimatedContainer(
-                    margin: EdgeInsets.all(3),
-                    duration: _duration,
-                    curve: _curve,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: controller.index == i ? fg : fg?.withOpacity(0.3),
-                    ),
-                    height: 6,
-                    width: 6,
-                  ),
-              ],
-            ),
-
-          /// Next / done button.
-          Expanded(
-            flex: 1,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: FilledButton(
-                child: Text(
-                  controller.isLastPage ? doneText : nextText,
-                  maxLines: 2,
+          /// Circular next/done button
+          Material(
+            color: Colors.white,
+            shape: CircleBorder(),
+            child: InkWell(
+              onTap: () {
+                controller.next();
+              },
+              customBorder: CircleBorder(),
+              child: Container(
+                width: 56,
+                height: 56,
+                alignment: Alignment.center,
+                child: Icon(
+                  Icons.chevron_right_rounded,
+                  color: Colors.red,
+                  size: 32,
                 ),
-                onPressed: () {
-                  controller.next();
-                },
               ),
             ),
           ),
