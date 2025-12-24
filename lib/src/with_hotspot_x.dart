@@ -49,7 +49,7 @@ extension WithHotspotX on Widget {
                       Text(
                         text,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.blue
+                          color: Colors.white
                         ),
                       ),
                   ],
