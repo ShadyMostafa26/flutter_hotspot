@@ -48,7 +48,9 @@ extension WithHotspotX on Widget {
                     if (text.isNotEmpty)
                       Text(
                         text,
-                        style: theme.textTheme.bodyMedium,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white
+                        ),
                       ),
                   ],
                 ),
