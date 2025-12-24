@@ -65,10 +65,11 @@ class HotspotActionBuilder extends StatelessWidget {
                 width: 56,
                 height: 56,
                 alignment: Alignment.center,
-                child: Icon(
-                  Icons.chevron_right_rounded,
+                child: Image.asset(
+                  'assets/images/forward.png',
                   color: Colors.red,
-                  size: 32,
+                  height: 20,
+                  width: 20,
                 ),
               ),
             ),
