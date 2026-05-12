@@ -11,6 +11,7 @@ extension WithHotspotX on Widget {
     Widget? icon,
     Size? hotspotSize,
     Offset hotspotOffset = Offset.zero,
+    Color? actionColor,
   }) {
     return Builder(
       builder: (context) {
@@ -22,6 +23,7 @@ extension WithHotspotX on Widget {
           hotspotSize: hotspotSize,
           hotspotOffset: hotspotOffset,
           order: order,
+          actionColor: actionColor,
           calloutBody: Row(
             children: [
               if (icon != null) ...[

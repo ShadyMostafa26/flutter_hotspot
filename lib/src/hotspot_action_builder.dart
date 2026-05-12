@@ -67,7 +67,7 @@ class HotspotActionBuilder extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/forward.png',
-                  color: Colors.red,
+                  color: controller.actionColor ?? Colors.red,
                   height: 20,
                   width: 20,
                 ),

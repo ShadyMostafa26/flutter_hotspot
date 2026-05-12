@@ -75,6 +75,7 @@ class HotspotTarget extends StatefulWidget {
     required this.child,
     this.hotspotSize,
     this.hotspotOffset = Offset.zero,
+    this.actionColor,
   }) : super(key: key);
 
   /// Combines multiple hotspot targets into a single group.
@@ -101,6 +102,7 @@ class HotspotTarget extends StatefulWidget {
 
   /// Override the hotspot center with a custom offset.
   final Offset hotspotOffset;
+  final Color? actionColor;
 
   @override
   HotspotTargetState createState() => HotspotTargetState();

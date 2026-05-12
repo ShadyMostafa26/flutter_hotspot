@@ -424,6 +424,7 @@ class HotspotProviderState extends State<HotspotProvider>
                                   index: _index,
                                   pages: currentFlow.length,
                                   foregroundColor: fg,
+                                  actionColor: currentTarget.widget.actionColor,
                                 ),
                               ),
                             ],
@@ -457,9 +458,11 @@ class CalloutActionController {
     required this.index,
     required this.pages,
     required this.foregroundColor,
+    this.actionColor,
   });
 
   final Color? foregroundColor;
+  final Color? actionColor;
 
   /// Dismiss the callout.
   final VoidCallback dismiss;
